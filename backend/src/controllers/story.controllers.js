@@ -17,7 +17,7 @@ async function story(req, res) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                model: "openai/gpt-4o-mini",
+                model: "openrouter/auto",
                 temperature: 0.7,
                 messages: [
                     { "role": "system", "content": systemPrompt},

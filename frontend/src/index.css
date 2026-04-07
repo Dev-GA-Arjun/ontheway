@@ -258,3 +258,149 @@ form {
     text-align: center;
     margin-top: 80px;
 }
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid #1e1e1e;
+}
+
+.nav-brand {
+    color: #f0ece0;
+    font-size: 1.1rem;
+    letter-spacing: 0.06em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+}
+
+.nav-link {
+    color: #5a5650;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #e8d9b8;
+}
+
+.main-content {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.story-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+}
+
+.story-actions button {
+    flex: 1;
+}
+
+.library h2 {
+    color: #f0ece0;
+    font-weight: 400;
+    margin-bottom: 24px;
+}
+
+.card-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.story-card {
+    background: #1a1a1a;
+    border: 1px solid #2e2e2e;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.card-header {
+    margin-bottom: 12px;
+}
+
+.card-title {
+    color: #f0ece0;
+    font-weight: 400;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.card-badges {
+    display: flex;
+    gap: 8px;
+}
+
+.badge {
+    background: #2a2118;
+    color: #e8d9b8;
+    border: 1px solid #4a3c28;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+}
+
+.card-preview {
+    color: #6a6660;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.card-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.card-actions button {
+    flex: 1;
+    padding: 8px;
+    font-size: 0.85rem;
+    margin-top: 0;
+}
+
+.delete-btn {
+    background-color: #2a1818 !important;
+    border-color: #4a2828 !important;
+    color: #e8b8b8 !important;
+}
+
+.delete-btn:hover {
+    background-color: #3a2020 !important;
+}
+
+.rename-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.rename-input {
+    flex: 1;
+    background: #0e0e0e;
+    border: 1px solid #2e2e2e;
+    border-radius: 6px;
+    padding: 6px 10px;
+    color: #d4d0c8;
+    font-family: 'Georgia', serif;
+    font-size: 0.95rem;
+}
+
+.rename-row button {
+    width: auto;
+    padding: 6px 12px;
+    margin-top: 0;
+    font-size: 0.85rem;
+}

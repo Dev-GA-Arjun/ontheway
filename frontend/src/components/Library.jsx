@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import StoryCard from './StoryCard'
-import { getSavedStories, updateStory, deleteStory } from '../services/api'
+import { getSavedStories, deleteStory, updateStory } from '../services/api'
 
 export default function Library() {
     const [stories, setStories] = useState([])
@@ -12,13 +12,15 @@ export default function Library() {
             const data = await getSavedStories()
             setStories(data)
         } catch (err) {
-            setError('Failed to load library.')
+            setError('Failed to load your library.')
         } finally {
             setLoading(false)
         }
     }
 
-    useEffect(() => { loadStories() }, [])
+    useEffect(() => {
+        loadStories()
+    }, [])
 
     const handleDelete = async (id) => {
         await deleteStory(id)
@@ -27,12 +29,16 @@ export default function Library() {
 
     const handleRename = async (id, title) => {
         await updateStory(id, title)
-        setStories(prev => prev.map(s => s._id === id ? { ...s, title } : s))
+        setStories(prev =>
+            prev.map(s => s._id === id ? { ...s, title } : s)
+        )
     }
 
     if (loading) return <p className="loading">Loading your library...</p>
     if (error) return <p className="error">{error}</p>
-    if (stories.length === 0) return <p className="empty">No saved stories yet. Generate one and save it!</p>
+    if (stories.length === 0) return (
+        <p className="loading">No saved stories yet. Generate one first!</p>
+    )
 
     return (
         <div className="library">

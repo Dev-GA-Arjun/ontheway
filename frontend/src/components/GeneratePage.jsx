@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import StoryForm from '../components/StoryForm'
-import StoryDisplay from '../components/StoryDisplay'
-import LoadingState from '../components/LoadingState'
+import StoryForm from './StoryForm'
+import StoryDisplay from './StoryDisplay'
+import LoadingState from './LoadingState'
 import { generateStory, saveStory } from '../services/api'
 
 export default function GeneratePage() {
@@ -14,8 +14,8 @@ export default function GeneratePage() {
     const handleSubmit = async ({ duration, genre }) => {
         setLoading(true)
         setError(null)
-        setGenre(genre)
         setDuration(duration)
+        setGenre(genre)
         try {
             const data = await generateStory({ duration, genre })
             setStory(data.data)
@@ -26,7 +26,10 @@ export default function GeneratePage() {
         }
     }
 
-    const handleReset = () => setStory(null)
+    const handleReset = () => {
+        setStory(null)
+        setError(null)
+    }
 
     const handleSave = async ({ title, genre, duration, content }) => {
         await saveStory({ title, genre, duration, content })

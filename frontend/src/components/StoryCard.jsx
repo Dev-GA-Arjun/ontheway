@@ -4,22 +4,10 @@ export default function StoryCard({ story, onDelete, onRename }) {
     const [expanded, setExpanded] = useState(false)
     const [renaming, setRenaming] = useState(false)
     const [newTitle, setNewTitle] = useState(story.title)
-    const [loading, setLoading] = useState(false)
 
     const handleRename = async () => {
-        setLoading(true)
-        try {
-            await onRename(story._id, newTitle)
-            setRenaming(false)
-        } catch (err) {
-            console.error(err)
-        } finally {
-            setLoading(false)
-        }
-    }
-
-    const handleDelete = async () => {
-        await onDelete(story._id)
+        await onRename(story._id, newTitle)
+        setRenaming(false)
     }
 
     return (
@@ -32,9 +20,7 @@ export default function StoryCard({ story, onDelete, onRename }) {
                             onChange={e => setNewTitle(e.target.value)}
                             className="rename-input"
                         />
-                        <button onClick={handleRename} disabled={loading}>
-                            {loading ? '...' : 'Save'}
-                        </button>
+                        <button onClick={handleRename}>Save</button>
                         <button onClick={() => setRenaming(false)}>Cancel</button>
                     </div>
                 ) : (
@@ -46,7 +32,7 @@ export default function StoryCard({ story, onDelete, onRename }) {
                 </div>
             </div>
 
-            <p className="card-preview" onClick={() => setExpanded(!expanded)}>
+            <p className="card-preview">
                 {expanded
                     ? story.content
                     : story.content.slice(0, 120) + '...'}
@@ -54,10 +40,15 @@ export default function StoryCard({ story, onDelete, onRename }) {
 
             <div className="card-actions">
                 <button onClick={() => setExpanded(!expanded)}>
-                    {expanded ? 'Collapse' : 'Read Full'}
+                    {expanded ? 'Collapse' : 'Read Full Story'}
                 </button>
                 <button onClick={() => setRenaming(true)}>Rename</button>
-                <button onClick={handleDelete} className="delete-btn">Delete</button>
+                <button
+                    className="delete-btn"
+                    onClick={() => onDelete(story._id)}
+                >
+                    Delete
+                </button>
             </div>
         </div>
     )
